@@ -17,19 +17,21 @@
 
 - ## Solution
 
-Pour ce challenge, on se retrouve tout d'abord sur une page d'accueil
- Après s'être inscrit et connecté on arrive sur le endpoint `/dashboard`
+Pour ce challenge, on se retrouve tout d'abord sur une page d'accueil.
+
+Après s'être inscrit et connecté on arrive sur le endpoint `/dashboard`
+
  ![Capture 1](https://raw.githubusercontent.com/Deilless/Writeups/main/Images/DUCTF_web1.png)
 
 Plusieurs  possibilités s'offrent à nous:
 ###### **1.**  Créer un report
 ###### **2.** Changer son nom d'utilisateur
 
-#
-#
-#
-#### Analyse du report
+---
+
+### Analyse du report
 On tente d'abord de créer un report avec un texte aléatoire.
+
 On se retrouve alors sur la page détaillant ce dernier.
 
  ![Capture 2](https://raw.githubusercontent.com/Deilless/Writeups/main/Images/DUCTF_web2.png)
@@ -46,9 +48,9 @@ Avec cette info en tête essayons une injection classique dans le champs report.
 Rien de spécial le champs ne semble pas vulnérable au injection XSS.
  ![Capture 3](https://raw.githubusercontent.com/Deilless/Writeups/main/Images/DUCTF_web3.png)
 
-#
-#
-#### Analyse du nom d'utilisateur
+---
+
+### Analyse du nom d'utilisateur
 Essayons maintenant d'insérer le payload dans le nom d'utilisateur.
  ![Capture 4](https://raw.githubusercontent.com/Deilless/Writeups/main/Images/DUCTF_web4.png)
 
