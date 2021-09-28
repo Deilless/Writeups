@@ -21,31 +21,31 @@ This challenge give us a network capture in .pcap format.
 
 First step is to open the file with wireshark to analyze the network's frames content.
 
-![Capture 1](notmyname1.jpg)
+![Capture 1](https://raw.githubusercontent.com/Deilless/Writeups/main/Images/notmyname1.jpg)
 
 As we can expect there are a ton of frames...
 
 The best way to have a quick overview of the network capture is to go into Statistics -> protocol hierarchy.
-![Capture 2](notmyname2.jpg)
-![Capture 3](notmyname3.jpg)
+![Capture 2](https://raw.githubusercontent.com/Deilless/Writeups/main/Images/notmyname2.jpg)
+![Capture 3](https://raw.githubusercontent.com/Deilless/Writeups/main/Images/notmyname3.jpg)
 
 The first thing we note is the suspiciously large amount of Domain Name System (DNS) frames which directly echoes the name of the challenge "That's not my **name**".
 
 We then filter frames by DNS protocol.
 
-![Capture 4](notmyname4.jpg)
+![Capture 4](https://raw.githubusercontent.com/Deilless/Writeups/main/Images/notmyname4.jpg)
 
 And after a quick review of the frames we found those pretty suspicious frames, every frame is encrypted which is quite unusual and their length is easily the double of others DNS frames.
 
-![Capture 5](notmyname5.jpg)
+![Capture 5](https://raw.githubusercontent.com/Deilless/Writeups/main/Images/notmyname5.jpg)
 
 We then follow the UDP stream to see how much and what data is being exchanged in this stream.
 
-![Capture 6](notmyname6.jpg)
+![Capture 6](https://raw.githubusercontent.com/Deilless/Writeups/main/Images/notmyname6.jpg)
 
 And the result, is again, very interesting. If we compare two UDP stream of DNS requests we can clearly see that there is a lot of data transfered. 
 
-![Capture 7](notmyname7.jpg)
+![Capture 7](https://raw.githubusercontent.com/Deilless/Writeups/main/Images/notmyname7.jpg)
 *left window is the UDP stream of a normal dns query, right window is the UDP stream of the suspicious query*
 
 In addition to the encoded data in the stream, the domain is suspiciously named `qawesrdtfgyhuj.xyz`, this detail will be useful later.
@@ -62,7 +62,7 @@ As we saw previously, we have a massive amount of encoded data in a UDP stream, 
 this command will dump every DNS packets in a text file, ready to be deciphered.
 A quick try on [CyberChef](https://gchq.github.io/CyberChef/#input=PT1RZjVKWFoyOTJZbEozWHpRWE1zRjNjN1pFVkRGbWUxRldX) will confirm that these packets are encoded in hex
 
-![Capture 8](notmyname8.jpg)
+![Capture 8](https://raw.githubusercontent.com/Deilless/Writeups/main/Images/notmyname8.jpg)
 
 Next I use [XPN's python script](https://blog.xpnsec.com/bsidessf-dnscap/) to filter out the uninteresting DNS packets and decipher what's left and dump the result in our standard output. As you can see, the packets are filtered by domain name, that's where we exploit our previous observation. 
 
