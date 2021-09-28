@@ -17,9 +17,9 @@
 
 - ## Solution
 
-This challenge give us a network capture in .pcap format.
+This challenge gives us a network capture in .pcap format.
 
-First step is to open the file with wireshark to analyze the network's frames content.
+First step is to open the file with wireshark to analyze the network capture content.
 
 ![Capture 1](https://github.com/Deilless/Writeups/blob/b6aef88cf16c2130cd1167f3527016183b475f39/Images/notmyname1.png)
 
@@ -44,14 +44,14 @@ We then follow the UDP stream to see how much and what data is being exchanged i
 
 ![Capture 6](https://github.com/Deilless/Writeups/blob/b6aef88cf16c2130cd1167f3527016183b475f39/Images/notmyname6.png)
 
-And the result, is again, very interesting. If we compare two UDP stream of DNS requests we can clearly see that there is a lot of data transfered. 
+And the result is, again, very interesting. If we compare two UDP streams of DNS requests we can clearly see that there is a lot of data transferred. 
 
 ![Capture 7](https://github.com/Deilless/Writeups/blob/b6aef88cf16c2130cd1167f3527016183b475f39/Images/notmyname7.png)
 *left window is the UDP stream of a normal dns query, right window is the UDP stream of the suspicious query*
 
 In addition to the encoded data in the stream, the domain is suspiciously named `qawesrdtfgyhuj.xyz`, this detail will be useful later.
 
-The ammount of data in this stream is massive and encoded, we'll need some tools to see what's hidden in it.
+The amount of data in this stream is massive and encoded, we'll need some tools to see what's hidden in it.
 
 ---
 ### Deciphering the stream
@@ -60,7 +60,7 @@ As we saw previously, we have a massive amount of encoded data in a UDP stream, 
 
 ```tshark -r notmyname.pcapng -Tfields -e dns.qry.name > dns.txt```
 
-this command will dump every DNS packets in a text file, ready to be deciphered.
+This command will dump every DNS packet in a text file, ready to be deciphered.
 A quick try on [CyberChef](https://gchq.github.io/CyberChef) will confirm that these packets are encoded in hex
 
 ![Capture 8](https://github.com/Deilless/Writeups/blob/b6aef88cf16c2130cd1167f3527016183b475f39/Images/notmyname8.png)
