@@ -26,7 +26,7 @@ First step is to open the file with wireshark to analyze the network's frames co
 As we can expect there are a ton of frames...
 
 The best way to have a quick overview of the network capture is to go into Statistics -> protocol hierarchy.
-![Capture 2](https://raw.githubusercontent.com/Deilless/Writeups/main/Images/notmyname2.jpg)
+![Capture 2](https://github.com/Deilless/Writeups/blob/b6aef88cf16c2130cd1167f3527016183b475f39/Images/notmyname2.png)
 ![Capture 3](https://raw.githubusercontent.com/Deilless/Writeups/main/Images/notmyname3.jpg)
 
 The first thing we note is the suspiciously large amount of Domain Name System (DNS) frames which directly echoes the name of the challenge "That's not my **name**".
