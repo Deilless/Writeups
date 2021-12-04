@@ -108,4 +108,4 @@ Qui se transforme en
 
 On à plus qu'à récupérer le cookie de l'admin et retourner sur le dashboard
 
-Et bim, dans la note de l'admin se trouve le flag : **`DUCTF{DUCTF{xxX_x55_4_1337_h4x0rz_Xxx}}`**
+Et bim, dans la note de l'admin se trouve le flag : **`DUCTF{xxX_x55_4_1337_h4x0rz_Xxx}`**
